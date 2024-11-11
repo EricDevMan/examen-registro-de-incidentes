@@ -104,7 +104,7 @@ export class VerincidentesPage implements OnInit {
     localStorage.setItem('incidentesCompletados', JSON.stringify(this.incidentesCompletados));
     this.incidentesFiltrados.splice(this.indice, 1);
     localStorage.setItem('incidentes', JSON.stringify(this.incidentesFiltrados));
-    
+
     // Agregar notificación
     let notificaciones = JSON.parse(localStorage.getItem('notificaciones') || '[]');
     notificaciones.push({
@@ -122,5 +122,14 @@ export class VerincidentesPage implements OnInit {
     console.log(this.indice);
     this.incidentesFiltrados.splice(this.indice, 1);
     localStorage.setItem('incidentes', JSON.stringify(this.incidentesFiltrados));
+    let incidente = this.incidentesFiltrados[this.indice]; //Añadir a incientes completados
+    
+    // Agregar notificación
+    let notificaciones = JSON.parse(localStorage.getItem('notificaciones') || '[]');
+    notificaciones.push({
+      mensaje: `Incidente Eliminado: ${incidente.tipoIncidente}`,
+      fecha: new Date().toLocaleString()
+    });
+    localStorage.setItem('notificaciones', JSON.stringify(notificaciones));
   }
 }
