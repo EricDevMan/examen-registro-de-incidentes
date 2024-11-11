@@ -125,6 +125,7 @@ export class VerincidentesPage implements OnInit {
     let incidente = this.incidentesFiltrados[this.indice]; //Añadir a incientes completados
     
     // Agregar notificación
+    
     let notificaciones = JSON.parse(localStorage.getItem('notificaciones') || '[]');
     notificaciones.push({
       mensaje: `Incidente Eliminado: ${incidente.tipoIncidente}`,
